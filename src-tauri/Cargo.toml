@@ -1,6 +1,6 @@
 [package]
 name = "instagram-automator"
-version = "1.0.0"
+version = "1.2.0"
 description = "Panel pengaturan untuk sistem auto-post & Auto-DM Instagram"
 edition = "2021"
 
