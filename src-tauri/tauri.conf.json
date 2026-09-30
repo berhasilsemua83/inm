@@ -1,8 +1,8 @@
 {
   "$schema": "https://schema.tauri.app/config/2",
-  "productName": "threads-automator",
-  "version": "2.0.0",
-  "identifier": "com.cerdas.threadsautomator",
+  "productName": "Instagram Automator", 
+  "version": "1.0.0",
+  "identifier": "com.cerdas.igautomator", 
   "build": {
     "frontendDist": "../dist",
     "devUrl": "http://localhost:1420",
