@@ -360,6 +360,20 @@ export default function App() {
     });
   }
 
+  function addGeminiKeyField() {
+    setConfig((prev) => ({
+      ...prev,
+      gemini_api_keys: [...prev.gemini_api_keys, ""]
+    }));
+  }
+
+  function removeGeminiKeyField(index: number) {
+    setConfig((prev) => {
+      const updated = prev.gemini_api_keys.filter((_, i) => i !== index);
+      return { ...prev, gemini_api_keys: updated.length > 0 ? updated : [""] };
+    });
+  }
+
   function updatePosterTime(index: number, value: string) {
     setConfig((prev) => {
       const updated = [...prev.schedule.poster_times];
