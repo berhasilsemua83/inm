@@ -176,7 +176,7 @@ async function main() {
       log(`[Komen Baru] di Post ${post.postId}: "${textClean}"`);
 
       try {
-        // SKENARIO 1: POST JUALAN (Kirim DM)
+        // SKENARIO 1: POST JUALAN (Kirim DM atau Lempar ke AI)
         if (post.type === 'jualan' && post.affiliateLink) {
           const rule = matchTriggerRule(textClean);
           
@@ -191,19 +191,27 @@ async function main() {
               
               // 2. Balas komen publik (Cek DM ya kak)
               await replyCommentPublicly(comment.id, rule.reply_comment);
-              
             } catch (dmErr) {
-              // FALLBACK: Kalau DM gagal (misal netizen private akun/matiin fitur DM)
+              // FALLBACK: Kalau DM gagal (misal netizen private akun)
               log(`[GAGAL DM] Akun mungkin diprivate. Fallback ke komen publik.`);
               const fallbackText = `Halo kak! Sayang sekali DM kakak tidak bisa kami kirimi pesan 😢. Ini link produknya ya kak: ${post.affiliateLink}`;
               await replyCommentPublicly(comment.id, fallbackText);
             }
-            
             newlyReplied.push(comment.id);
+
           } else {
-            log(`[SKIP] Komen tidak cocok dengan trigger kata kunci jualan.`);
+            // JIKA BUKAN KATA KUNCI JUALAN -> LEMPAR KE AI GEMINI!
+            log(`[HYBRID] Komen tidak ada trigger jualan, melempar ke AI Gemini...`);
+            const aiReply = await generateAiReply(post.captionText, textClean);
+            if (aiReply) {
+              await replyCommentPublicly(comment.id, aiReply);
+              log(`[SUKSES AI] Balas komen umum di post jualan: "${aiReply}"`);
+              newlyReplied.push(comment.id);
+            } else {
+              log(`[SKIP] AI gagal membuat balasan.`);
+            }
           }
-        } 
+        }
         
         // SKENARIO 2: POST UMUM (Balas via AI Gemini)
         else {
