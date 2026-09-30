@@ -1,0 +1,19 @@
+{
+  "_petunjuk": "Edit isi 'rules' di bawah. 'keywords' = kata yang dicari di komentar/DM netizen. 'reply_comment' = balasan publik di postingan. 'dm_message' = teks pengantar sblm link affiliate di DM.",
+
+  "rules": [
+    {
+      "keywords": ["spill", "mau", "link", "harga", "beli"],
+      "reply_comment": "Halo kak! Link produknya sudah aku kirim ke DM yaa, silakan dicek 📩",
+      "dm_message": "Halo kak! Terima kasih sudah komen. Ini dia link produk yang kakak cari ya: "
+    },
+    {
+      "keywords": ["ukuran", "size", "warna", "ready"],
+      "reply_comment": "Untuk pilihan warna/ukuran lengkap bisa langsung cek link di DM ya kak 😊",
+      "dm_message": "Halo kak! Untuk cek ketersediaan warna dan ukuran, kakak bisa klik link toko ini ya: "
+    }
+  ],
+
+  "fallback_reply": null,
+  "_catatan_fallback": "Kalau fallback_reply diisi null, komentar yang tidak ada unsur kata kunci (misal: 'Wah keren') akan dilempar ke AI Gemini untuk dibalas secara natural."
+}

@@ -1,0 +1,12 @@
+{
+  "name": "ig-automator-bot",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Sistem auto-post & Auto-DM Instagram",
+  "main": "ig-poster.js",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "axios": "^1.7.2",
+    "@aws-sdk/client-s3": "^3.0.0"
+  }
+}
