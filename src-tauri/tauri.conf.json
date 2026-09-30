@@ -12,7 +12,7 @@
   "app": {
     "windows": [
       {
-        "title": "Threads Automator - Pengaturan",
+        "title": "Instagram Automator", 
         "width": 720,
         "height": 800,
         "resizable": true
